@@ -7,10 +7,32 @@ let winterDays = [
   24,
 ];
 
-let down = 0;
+/*let down = 0;
 for (let i = 0; i < winterDays.length - 1; i++) {
-  if (winterDays[i] > 0 && winterDays[i + 1] < 0) {
+  if (winterDays[i] => 0 && winterDays[i + 1] < 0) {
     down++;
   }
 }
-console.log(down);
+console.log(down);*/
+let mas = [];
+for (let i = 0; i < winterDays.length - 1; i++) {
+  if (winterDays[i] < 0 && winterDays[i + 1] < 0) {
+    mas.push(i);
+  }
+}
+let maxPeriod = [0];
+console.log(mas);
+for (let n = 0; n < mas.length; n++) {
+  if (mas[n] < mas[n + 1]) {
+    let result = mas[n + 1];
+    maxPeriod.slice(result);
+    console.log(result.length);
+  }
+}
+
+/*for (let item of mas) {
+  if (item > maxPeriod.length) {
+    maxPeriod.length = item;
+  }
+}*/
+console.log(maxPeriod);
