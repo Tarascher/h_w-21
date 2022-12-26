@@ -17,21 +17,54 @@ console.log(` замерзаний в  этот период было - ${down} 
 
 // подсчет максимального периода днейкогда был минус
 
-let maximumNumberDaysWithNegativeTemperature = 1; //максимальное количество дней с отрицательной температурой
-let consecutiveNegativeDays = 1; //дни с отрицательной температурой идущие подряд
+let maximumNumberDaysWithNegativeTemperature = 0; //максимальное количество дней с отрицательной температурой
+let maximumNumberDaysWithPositiveTemperature = 0; //максимальное количество дней с плюсовой температурой
+let consecutiveNegativeDays = 0; //дни с отрицательной температурой идущие подряд
+let successivePositivedays = 0; //дни с положительной температурой идущие подряд
 for (let i = 0; i < winterDays.length - 1; i++) {
   if (winterDays[i] < 0 && winterDays[i + 1] < 0) {
     consecutiveNegativeDays++;
-  } else if (winterDays[i] > 0 && winterDays[i + 1] > 0) {
-    consecutiveNegativeDays--;
+  } else if (winterDays[i] >= 0 && winterDays[i + 1] >= 0) {
+    consecutiveNegativeDays = 0;
   }
+
   if (maximumNumberDaysWithNegativeTemperature < consecutiveNegativeDays) {
     maximumNumberDaysWithNegativeTemperature = consecutiveNegativeDays;
   }
+
+  if (winterDays[i] >= 0 && winterDays[i + 1] >= 0) {
+    successivePositivedays++;
+  } else if (winterDays[i] < 0 && winterDays[i + 1] < 0) {
+    successivePositivedays = 0;
+  }
+
+  if (maximumNumberDaysWithPositiveTemperature < successivePositivedays) {
+    maximumNumberDaysWithPositiveTemperature = successivePositivedays;
+  }
 }
 
+if (
+  maximumNumberDaysWithNegativeTemperature <
+  maximumNumberDaysWithPositiveTemperature
+) {
+  alert(
+    `больше морозных дней идущих подряд , в количестве${maximumNumberDaysWithNegativeTemperature} дней`
+  );
+} else if (
+  maximumNumberDaysWithNegativeTemperature >
+  maximumNumberDaysWithPositiveTemperature
+) {
+  alert(
+    `больше теплых дней идущих подряд , в количестве${maximumNumberDaysWithPositiveTemperature} дней`
+  );
+} else {
+  alert(`поровну`);
+}
 console.log(
   `максимальное период дней с отрицательной температурой   -  ${maximumNumberDaysWithNegativeTemperature} дней;`
+);
+console.log(
+  `максимальное период дней с плюсовой температурой   -  ${maximumNumberDaysWithPositiveTemperature} дней;`
 );
 
 /*let maxPeriod = [0];
