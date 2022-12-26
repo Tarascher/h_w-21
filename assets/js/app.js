@@ -22,9 +22,9 @@ let maximumNumberDaysWithPositiveTemperature = 0; //максимальное к�
 let consecutiveNegativeDays = 0; //дни с отрицательной температурой идущие подряд
 let successivePositivedays = 0; //дни с положительной температурой идущие подряд
 for (let i = 0; i < winterDays.length - 1; i++) {
-  if (winterDays[i] < 0 && winterDays[i + 1] < 0) {
+  if (winterDays[i] < 0) {
     consecutiveNegativeDays++;
-  } else if (winterDays[i] >= 0 && winterDays[i + 1] >= 0) {
+  } else {
     consecutiveNegativeDays = 0;
   }
 
@@ -32,9 +32,9 @@ for (let i = 0; i < winterDays.length - 1; i++) {
     maximumNumberDaysWithNegativeTemperature = consecutiveNegativeDays;
   }
 
-  if (winterDays[i] >= 0 && winterDays[i + 1] >= 0) {
+  if (winterDays[i] >= 0) {
     successivePositivedays++;
-  } else if (winterDays[i] < 0 && winterDays[i + 1] < 0) {
+  } else {
     successivePositivedays = 0;
   }
 
@@ -44,14 +44,14 @@ for (let i = 0; i < winterDays.length - 1; i++) {
 }
 
 if (
-  maximumNumberDaysWithNegativeTemperature <
+  maximumNumberDaysWithNegativeTemperature >
   maximumNumberDaysWithPositiveTemperature
 ) {
   alert(
     `больше морозных дней идущих подряд , в количестве${maximumNumberDaysWithNegativeTemperature} дней`
   );
 } else if (
-  maximumNumberDaysWithNegativeTemperature >
+  maximumNumberDaysWithNegativeTemperature <
   maximumNumberDaysWithPositiveTemperature
 ) {
   alert(
